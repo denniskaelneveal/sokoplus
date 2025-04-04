@@ -25,11 +25,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bondi.harakamall.R
 import com.bondi.harakamall.ui.theme.neworange
 
 @Composable
-fun StartScreen(){
+fun StartScreen(navController: NavController){
     //For the white screen,contents to be arranged vertically without being over ech other
     Column (
         modifier = Modifier.fillMaxSize(),
@@ -61,7 +63,9 @@ fun StartScreen(){
             )
                 Text(text="E-commerce websites act as digital storefronts, enabling businesses to reach a wider audience and conduct transactions online.")
 
-        Button(onClick = {},
+        Button(onClick = {
+
+        },
             colors = ButtonDefaults.buttonColors(Color.Blue),
 
             shape = RoundedCornerShape(10.dp),
@@ -78,7 +82,7 @@ fun StartScreen(){
 @Preview(showBackground = true)
 @Composable
 fun StartScreenPreview(){
-    StartScreen()
+    StartScreen(rememberNavController())
 
 
 }

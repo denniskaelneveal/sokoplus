@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
@@ -42,13 +44,15 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bondi.harakamall.R
 import com.bondi.harakamall.ui.theme.neworange
 import com.bondi.harakamall.ui.theme.newwhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemScreen(){
+fun ItemScreen(navController: NavController){
     Column (modifier = Modifier.fillMaxSize(
 
     )
@@ -74,190 +78,246 @@ fun ItemScreen(){
             }
         )
         //End of TopAppBar
-        Image(
-            painter = painterResource(R.drawable.furniture2),
-            contentDescription = "home",
-            modifier = Modifier.fillMaxWidth().height(200.dp),
-            contentScale = ContentScale.FillWidth,
+      Column(modifier = Modifier.verticalScroll(rememberScrollState())){
+          Image(
+              painter = painterResource(R.drawable.furniture2),
+              contentDescription = "home",
+              modifier = Modifier.fillMaxWidth().height(200.dp),
+              contentScale = ContentScale.FillWidth,
 
-            )
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-        //SearchBar
-        var search by remember { mutableStateOf("") }
-        OutlinedTextField(
-            value = search,
-            onValueChange = {search = it},
-            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector =Icons.Default.Search, contentDescription = "")},
-            placeholder = { Text(text = "search...")}
-        )
-        //End of SearchBar
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Start of Row
-
-        Row (){
-            Image(
-                painter = painterResource(R.drawable.tool2),
-                contentDescription = "home",
-                modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-                )
-
-            Spacer(modifier = Modifier.width(10.dp))
+              )
+          Spacer(modifier = Modifier.height(20.dp))
 
 
-            Column {
-               Text(
-                   text = "Men's shirt",
-                   fontSize = 20.sp,
-                   fontWeight = FontWeight.ExtraBold,
+          //SearchBar
+          var search by remember { mutableStateOf("") }
+          OutlinedTextField(
+              value = search,
+              onValueChange = {search = it},
+              modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
+              leadingIcon = { Icon(imageVector =Icons.Default.Search, contentDescription = "")},
+              placeholder = { Text(text = "search...")}
+          )
+          //End of SearchBar
+          Spacer(modifier = Modifier.height(10.dp))
+
+          //Start of Row
+
+          Row (){
+              Image(
+                  painter = painterResource(R.drawable.tool2),
+                  contentDescription = "home",
+                  modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
+                  contentScale = ContentScale.FillWidth,
+              )
+
+              Spacer(modifier = Modifier.width(10.dp))
 
 
-
-                   )
-
-
-               Text(text = "Casual Wear",
-                   fontSize = 20.sp,
-                   )
-
-                Text(text = "Ksh 200",
-                    fontSize = 20.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
-                }
-                Button(onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color.Blue),
-
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
-                ) {Text(text = "Contact us") }
+              Column {
+                  Text(
+                      text = "Men's shirt",
+                      fontSize = 20.sp,
+                      fontWeight = FontWeight.ExtraBold,
 
 
 
-            }
-        }
-        //End of Row
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Start of Row
-
-        Row (){
-            Image(
-                painter = painterResource(R.drawable.furniture8),
-                contentDescription = "home",
-                modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
-
-            Spacer(modifier = Modifier.width(10.dp))
+                      )
 
 
-            Column {
-                Text(
-                    text = "Men's shirt",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold,
+                  Text(text = "Casual Wear",
+                      fontSize = 20.sp,
+                  )
 
+                  Text(text = "Ksh 200",
+                      fontSize = 20.sp,
+                      textDecoration = TextDecoration.LineThrough
+                  )
 
+                  Row {
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
+                  }
+                  Button(onClick = {},
+                      colors = ButtonDefaults.buttonColors(Color.Blue),
 
-                    )
-
-
-                Text(text = "Casual Wear",
-                    fontSize = 20.sp,
-                )
-
-                Text(text = "Ksh 200",
-                    fontSize = 20.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
-                }
-                Button(onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color.Blue),
-
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
-                ) {Text(text = "Contact us") }
+                      shape = RoundedCornerShape(10.dp),
+                      modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
+                  ) {Text(text = "Contact us") }
 
 
 
-            }
-        }
-        //End of Row
+              }
+          }
+          //End of Row
 
-        Spacer(modifier = Modifier.height(10.dp))
+          Spacer(modifier = Modifier.height(10.dp))
 
-        //Start of Row
+          //Start of Row
 
-        Row (){
-            Image(
-                painter = painterResource(R.drawable.furniture7),
-                contentDescription = "home",
-                modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
+          Row (){
+              Image(
+                  painter = painterResource(R.drawable.furniture8),
+                  contentDescription = "home",
+                  modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
+                  contentScale = ContentScale.FillWidth,
+              )
 
-            Spacer(modifier = Modifier.width(10.dp))
-
-
-            Column {
-                Text(
-                    text = "Men's shirt",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold,
+              Spacer(modifier = Modifier.width(10.dp))
 
 
-
-                    )
-
-
-                Text(text = "Casual Wear",
-                    fontSize = 20.sp,
-                )
-
-                Text(text = "Ksh 200",
-                    fontSize = 20.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
-                }
-                Button(onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color.Blue),
-
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
-                ) {Text(text = "Contact us") }
+              Column {
+                  Text(
+                      text = "Men's shirt",
+                      fontSize = 20.sp,
+                      fontWeight = FontWeight.ExtraBold,
 
 
 
-            }
-        }
-        //End of Row
+                      )
+
+
+                  Text(text = "Casual Wear",
+                      fontSize = 20.sp,
+                  )
+
+                  Text(text = "Ksh 200",
+                      fontSize = 20.sp,
+                      textDecoration = TextDecoration.LineThrough
+                  )
+
+                  Row {
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
+                  }
+                  Button(onClick = {},
+                      colors = ButtonDefaults.buttonColors(Color.Blue),
+
+                      shape = RoundedCornerShape(10.dp),
+                      modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
+                  ) {Text(text = "Contact us") }
+
+
+
+              }
+          }
+          //End of Row
+
+          Spacer(modifier = Modifier.height(10.dp))
+
+          //Start of Row
+
+          Row (){
+              Image(
+                  painter = painterResource(R.drawable.furniture7),
+                  contentDescription = "home",
+                  modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
+                  contentScale = ContentScale.FillWidth,
+              )
+
+              Spacer(modifier = Modifier.width(10.dp))
+
+
+              Column {
+                  Text(
+                      text = "Men's shirt",
+                      fontSize = 20.sp,
+                      fontWeight = FontWeight.ExtraBold,
+
+
+
+                      )
+
+
+                  Text(text = "Casual Wear",
+                      fontSize = 20.sp,
+                  )
+
+                  Text(text = "Ksh 200",
+                      fontSize = 20.sp,
+                      textDecoration = TextDecoration.LineThrough
+                  )
+
+                  Row {
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
+                  }
+                  Button(onClick = {},
+                      colors = ButtonDefaults.buttonColors(Color.Blue),
+
+                      shape = RoundedCornerShape(10.dp),
+                      modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
+                  ) {Text(text = "Contact us") }
+
+
+
+              }
+          }
+          //End of Row
+          Spacer(modifier = Modifier.height(10.dp))
+
+          //Start of Row
+
+          Row (){
+              Image(
+                  painter = painterResource(R.drawable.furniture7),
+                  contentDescription = "home",
+                  modifier = Modifier.width(200.dp).height(200.dp).clip(shape = RoundedCornerShape(10.dp)),
+                  contentScale = ContentScale.FillWidth,
+              )
+
+              Spacer(modifier = Modifier.width(10.dp))
+
+
+              Column {
+                  Text(
+                      text = "Men's shirt",
+                      fontSize = 20.sp,
+                      fontWeight = FontWeight.ExtraBold,
+
+
+
+                      )
+
+
+                  Text(text = "Casual Wear",
+                      fontSize = 20.sp,
+                  )
+
+                  Text(text = "Ksh 200",
+                      fontSize = 20.sp,
+                      textDecoration = TextDecoration.LineThrough
+                  )
+
+                  Row {
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = neworange)
+                      Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = newwhite)
+                  }
+                  Button(onClick = {},
+                      colors = ButtonDefaults.buttonColors(Color.Blue),
+
+                      shape = RoundedCornerShape(10.dp),
+                      modifier = Modifier.fillMaxWidth().padding(start = 20.dp),
+                  ) {Text(text = "Contact us") }
+
+
+
+              }
+          }
+          //End of Row
+      }
 
 
 
@@ -272,7 +332,7 @@ fun ItemScreen(){
 @Preview(showBackground = true)
 @Composable
 fun ItemScreenPreview(){
-    ItemScreen()
+    ItemScreen(rememberNavController())
 
 
 }
