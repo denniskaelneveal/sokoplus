@@ -8,9 +8,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bondi.harakamall.ui.screens.about.AboutScreen
+import com.bondi.harakamall.ui.screens.dashboard.DashboardScreen
 import com.bondi.harakamall.ui.screens.home.HomeScreen
 import com.bondi.harakamall.ui.screens.intent.IntentScreen
 import com.bondi.harakamall.ui.screens.item.ItemScreen
+import com.bondi.harakamall.ui.screens.more.MoreScreen
 import com.bondi.harakamall.ui.screens.start.StartScreen
 
 @Composable
@@ -39,6 +41,12 @@ fun AppNavHost(
         }
         composable(ROUT_INTENT) {
             IntentScreen(navController)
+        }
+        composable(ROUT_MORE) {
+            MoreScreen(navController)
+        }
+        composable(ROUT_DASHBOARD) {
+            DashboardScreen(navController)
         }
 
     }

@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
@@ -47,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bondi.harakamall.R
+import com.bondi.harakamall.navigation.ROUT_INTENT
 import com.bondi.harakamall.ui.theme.neworange
 import com.bondi.harakamall.ui.theme.newwhite
 
@@ -68,13 +70,17 @@ fun ItemScreen(navController: NavController){
                 actionIconContentColor = newwhite
             ),
             navigationIcon = {
-                IconButton(onClick = {}) {
+                IconButton(onClick = {
+                    navController.navigate(ROUT_INTENT)
+                }) {
                     Icon(imageVector = Icons.Default.Menu, contentDescription = "menu")
                 }
             },
             actions = {
                 Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = "shoppingcart")
                 Icon(imageVector = Icons.Default.Notifications, contentDescription = "notifications")
+                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "shoppingcart")
+
             }
         )
         //End of TopAppBar
