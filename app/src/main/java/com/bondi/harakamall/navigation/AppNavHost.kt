@@ -13,6 +13,7 @@ import com.bondi.harakamall.ui.screens.home.HomeScreen
 import com.bondi.harakamall.ui.screens.intent.IntentScreen
 import com.bondi.harakamall.ui.screens.item.ItemScreen
 import com.bondi.harakamall.ui.screens.more.MoreScreen
+import com.bondi.harakamall.ui.screens.service.ServiceScreen
 import com.bondi.harakamall.ui.screens.start.StartScreen
 
 @Composable
@@ -47,6 +48,9 @@ fun AppNavHost(
         }
         composable(ROUT_DASHBOARD) {
             DashboardScreen(navController)
+        }
+        composable(ROUT_SERVICE) {
+            ServiceScreen(navController)
         }
 
     }

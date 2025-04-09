@@ -1,6 +1,7 @@
 package com.bondi.harakamall.ui.screens.dashboard
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,6 +29,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bondi.harakamall.R
+import com.bondi.harakamall.navigation.ROUT_DASHBOARD
+import com.bondi.harakamall.navigation.ROUT_HOME
+import com.bondi.harakamall.navigation.ROUT_INTENT
+import com.bondi.harakamall.navigation.ROUT_ITEM
+import com.bondi.harakamall.navigation.ROUT_MORE
 import com.bondi.harakamall.ui.theme.neworange
 import com.bondi.harakamall.ui.theme.newwhite
 
@@ -52,76 +58,157 @@ fun DashboardScreen(navController: NavController){
                 )
                 Text(
                     text = "sokomart",
-                    fontSize = 40.dp,
+                    fontSize = 40.sp,
                     color = newwhite,
                     fontFamily = FontFamily.Cursive,
                     fontWeight = FontWeight.ExtraBold
                 )
 
+
+
             }
 
 
         }
-    }
+
         //End of card
-    Spacer(modifier = Modifier.height(40.dp))
-    Row (modifier = Modifier.padding(start = 20.dp)) {
-        //card
-        Card(
-            modifier = Modifier.width(150.dp).height(180.dp),
-            elevation = CardDefaults.cardElevation(20.dp)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.furniture3),
-                    contentDescription = "home",
-                    modifier = Modifier.size(100.dp)
-                )
-                Text(text = "home", fontSize = 15.sp)
+        Spacer(modifier = Modifier.height(40.dp))
 
+        //Row1
+        Row (modifier = Modifier.padding(start = 20.dp)
+        ){
 
-            }
-        }
-//end of card
-    }
-    //end of row
+            //Card1
+            Card (
+                modifier = Modifier.width(150.dp).height(180.dp).clickable {
+                    navController.navigate(ROUT_HOME)
+                },
+                colors = CardDefaults.cardColors(neworange)
 
-    Spacer(modifier = Modifier.width(20.dp))
-    Row (modifier = Modifier.padding(start = 20.dp)) {
-        //card
-        Card(
-            modifier = Modifier.width(150.dp).height(180.dp),
-            elevation = CardDefaults.cardElevation(20.dp)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.furniture3),
-                    contentDescription = "home",
-                    modifier = Modifier.size(100.dp)
-                )
-                Text(text = "home", fontSize = 15.sp)
+            ){
 
+                Column (
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Image(
+                        painter = painterResource(R.drawable.home1),
+                        contentDescription = "blouse",
+                        modifier = Modifier.size(100.dp),
+                    )
+
+                    Text(text = "Home", fontSize = 15.sp)
+
+                }
 
             }
+            //end of card1
+
+            Spacer(modifier = Modifier.width(20.dp))
+
+            //Card2
+            Card (
+                modifier = Modifier.width(150.dp).height(180.dp).clickable{navController.navigate(ROUT_INTENT)},
+                colors = CardDefaults.cardColors(neworange)
+            ){
+
+                Column (
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Image(
+                        painter = painterResource(R.drawable.about),
+                        contentDescription = "blouse",
+                        modifier = Modifier.size(100.dp),
+                    )
+
+                    Text(text = "About", fontSize = 15.sp)
+
+                }
+
+            }
+            //end of card2
+
         }
-//end of card
+
+        //End Of Row1
+
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        //Row2
+        Row (modifier = Modifier.padding(start = 20.dp)
+        ){
+
+            //Card1
+            Card (
+                modifier = Modifier.width(150.dp).height(180.dp).clickable{navController.navigate(
+                    ROUT_DASHBOARD
+                )},
+                colors = CardDefaults.cardColors(neworange)
+            ){
+
+                Column (
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Image(
+                        painter = painterResource(R.drawable.contact1),
+                        contentDescription = "blouse",
+                        modifier = Modifier.size(100.dp),
+                    )
+
+                    Text(text = "Contact", fontSize = 15.sp)
+
+                }
+
+            }
+            //end of card1
+
+            Spacer(modifier = Modifier.width(20.dp))
+
+            //Card2
+            Card (
+                modifier = Modifier.width(150.dp).height(180.dp).clickable{navController.navigate(
+                    ROUT_MORE
+                )},
+                colors = CardDefaults.cardColors(neworange)
+            ){
+
+                Column (
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Image(
+                        painter = painterResource(R.drawable.product),
+                        contentDescription = "blouse",
+                        modifier = Modifier.size(100.dp),
+                    )
+
+                    Text(text = "Products", fontSize = 15.sp)
+
+                }
+
+            }
+            //end of card2
+
+        }
+
+        //End Of Row2
+
+
+
+
+
     }
-    //end of row
-
-
-
-
 
 
 }
+
 
 
 
